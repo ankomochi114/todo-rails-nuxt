@@ -5,9 +5,15 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "format": "prettier --write './**/*.{ts,json,vue}'"
   },
   "devDependencies": {
-    "nuxt": "^3.2.2"
+    "@nuxt/eslint-config": "^0.1.1",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "nuxt": "^3.2.2",
+    "prettier": "^2.8.4"
   }
 }

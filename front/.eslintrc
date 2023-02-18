@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "node": true
+  },
+  "extends": ["@nuxtjs/eslint-config-typescript", "prettier"],
+  "globals": {
+    "defineNuxtPlugin": false,
+    "defineNuxtConfig": false,
+    "useNuxtApp": false,
+    "computed": false,
+    "toRefs": false,
+    "onMounted": false
+  }
+}
