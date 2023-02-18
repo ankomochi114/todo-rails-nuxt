@@ -1,0 +1,38 @@
+version: '3'
+services:
+  db:
+    image: mysql/mysql-server:5.7.28
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-volume:/var/lib/mysql
+  api:
+    build: docker/api
+    tty: true
+    volumes:
+      - ./api:/api
+      - bundle:/usr/local/bundle
+    ports:
+      - "8000:8000"
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+    command: bundle exec rails s -p 8000 -b '0.0.0.0'
+    depends_on:
+      - db
+  front:
+    build: docker/front
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front:/app:cached
+      - nuxt_node_modules:/app/node_modules
+    tty: true
+    command: yarn dev
+volumes:
+  nuxt_node_modules:
+  bundle:
+  db-volume:
