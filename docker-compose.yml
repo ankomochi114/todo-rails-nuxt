@@ -27,8 +27,9 @@ services:
     build: docker/front
     ports:
       - "3000:3000"
+      - "24678:24678"
     volumes:
-      - ./front:/app:cached
+      - ./front:/app
     tty: true
     command: sh -c "yarn && yarn dev"
 volumes:
